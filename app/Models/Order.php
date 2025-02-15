@@ -8,6 +8,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
+
+
+enum OrderStatus: string
+{
+    case Pending = 'pending';
+    case Processing = 'processing';
+    case Shipped = 'shipped';
+    case Delivered = 'delivered';
+    case Cancelled = 'cancelled';
+}
+
+
 class Order extends Model
 {
 
@@ -19,6 +31,14 @@ class Order extends Model
         'status',
         'total_amount',
     ];
+
+
+
+
+    protected $casts = [
+        'status' => OrderStatus::class
+    ];
+
 
     public function items(): HasMany
     {

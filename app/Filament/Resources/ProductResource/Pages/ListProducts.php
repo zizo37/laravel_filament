@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources\ProductResource\Pages;
 
+use App\Filament\Exports\ProductExporter;
 use App\Filament\Resources\ProductResource;
 use Filament\Actions;
+use Filament\Actions\ExportAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListProducts extends ListRecords
@@ -14,6 +16,8 @@ class ListProducts extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+            ExportAction::make()
+            ->exporter(ProductExporter::class)
         ];
     }
 }
