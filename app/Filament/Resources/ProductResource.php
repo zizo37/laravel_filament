@@ -45,7 +45,7 @@ class ProductResource extends Resource
 
     public static function getNavigationBadgeColor(): ?string
     {
-        return 'success'; // Change this to the desired color
+        return 'success';
     }
 
     public static function form(Form $form): Form
@@ -117,81 +117,89 @@ public static function table(Table $table): Table
             Tables\Columns\TextColumn::make('stock')->searchable(),
             Tables\Columns\TextColumn::make('category.name')->searchable()->label('Category')->url(fn (Model $record): string => CategorieResource::getUrl('edit',['record'=>$record->category_id])),
             Tables\Columns\TextColumn::make('depot.name')->searchable()->label('Depot')->url(fn (Model $record): string => DepotResource::getUrl('edit',['record'=>$record->depot_id])),
-            Tables\Columns\ToggleColumn::make('is_active')->label('Active'),
+            Tables\Columns\IconColumn::make('is_active')
+                ->label('Active')
+                ->boolean()
+                ->action(function($record, $column) {
+                    $name = $column->getName();
+                    $record->update([
+                        $name => !$record->$name
+                    ]);
+                }),
         ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\ViewAction::make()->label('')->icon('heroicon-o-eye')
-                ->iconButton()
-                ->size('lg')
-                ->extraAttributes(['class' => 'font-bold']),
-
-                Tables\Actions\EditAction::make()->label('')->icon('fas-user-edit')
-                ->iconButton()
-                ->size('lg')
-                ->extraAttributes(['class' => 'font-bold']),
-
-                Tables\Actions\Action::make('add_to_cart')
-                    // ->icon('heroicon-o-shopping-cart')
-                    ->color('success')
-                    ->form([
-                        Forms\Components\TextInput::make('quantity')
-                            ->required()
-                            ->numeric()
-                            ->minValue(1)
-                            ->default(1)
-                            ->label('Quantity')
-                            ->helperText(fn (Product $record) => 'Available: ' . $record->stock)
-                            ->maxValue(fn (Product $record) => $record->stock),
-                    ])
-                    ->action(function (Product $record, array $data) {
-                        $cartItem = CartItem::updateOrCreate(
-                            [
-                                'user_id' => Auth::id(),
-                                'product_id' => $record->id
-                            ],
-                            [
-                                'quantity' => $data['quantity'],
-                                'unit_price' => $record->price,
-                            ]
-                        );
-
-                        Notification::make()
-                            ->success()
-                            ->title('Added to cart')
-                            ->body('Product has been added to your cart.')
-                            ->send();
-                    })
-                    ->visible(fn (Product $record): bool =>
-                        $record->stock > 0 && $record->is_active
-                    )->label('')->icon('fas-cart-plus')
-                    ->iconButton()
-                    ->size('lg')
-                    ->extraAttributes(['class' => 'font-bold']),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
+        ->filters([
             //
-        ];
-    }
+        ])
+        ->actions([
+            Tables\Actions\ViewAction::make()->label('')->icon('heroicon-o-eye')
+            ->iconButton()
+            ->size('lg')
+            ->extraAttributes(['class' => 'font-bold']),
 
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListProducts::route('/'),
-            'create' => Pages\CreateProduct::route('/create'),
-            'view' => Pages\ViewProduct::route('/{record}'),
-            'edit' => Pages\EditProduct::route('/{record}/edit'),
-        ];
-    }
+            Tables\Actions\EditAction::make()->label('')->icon('fas-user-edit')
+            ->iconButton()
+            ->size('lg')
+            ->extraAttributes(['class' => 'font-bold']),
+
+            Tables\Actions\Action::make('add_to_cart')
+                // ->icon('heroicon-o-shopping-cart')
+                ->color('success')
+                ->form([
+                    Forms\Components\TextInput::make('quantity')
+                        ->required()
+                        ->numeric()
+                        ->minValue(1)
+                        ->default(1)
+                        ->label('Quantity')
+                        ->helperText(fn (Product $record) => 'Available: ' . $record->stock)
+                        ->maxValue(fn (Product $record) => $record->stock),
+                ])
+                ->action(function (Product $record, array $data) {
+                    $cartItem = CartItem::updateOrCreate(
+                        [
+                            'user_id' => Auth::id(),
+                            'product_id' => $record->id
+                        ],
+                        [
+                            'quantity' => $data['quantity'],
+                            'unit_price' => $record->price,
+                        ]
+                    );
+
+                    Notification::make()
+                        ->success()
+                        ->title('Added to cart')
+                        ->body('Product has been added to your cart.')
+                        ->send();
+                })
+                ->visible(fn (Product $record): bool =>
+                    $record->stock > 0 && $record->is_active
+                )->label('')->icon('fas-cart-plus')
+                ->iconButton()
+                ->size('lg')
+                ->extraAttributes(['class' => 'font-bold']),
+        ])
+        ->bulkActions([
+            Tables\Actions\BulkActionGroup::make([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]),
+        ]);
+}
+
+public static function getRelations(): array
+{
+    return [
+        //
+    ];
+}
+
+public static function getPages(): array
+{
+    return [
+        'index' => Pages\ListProducts::route('/'),
+        'create' => Pages\CreateProduct::route('/create'),
+        'view' => Pages\ViewProduct::route('/{record}'),
+        'edit' => Pages\EditProduct::route('/{record}/edit'),
+    ];
+}
 }

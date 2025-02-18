@@ -3,9 +3,11 @@
 namespace App\Filament\Resources\ProductResource\Pages;
 
 use App\Filament\Exports\ProductExporter;
+use App\Filament\Imports\ProductImporter;
 use App\Filament\Resources\ProductResource;
 use Filament\Actions;
 use Filament\Actions\ExportAction;
+use Filament\Actions\ImportAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListProducts extends ListRecords
@@ -18,6 +20,13 @@ class ListProducts extends ListRecords
             Actions\CreateAction::make(),
             ExportAction::make()
             ->exporter(ProductExporter::class)
+            ->outlined()
+            ->icon('heroicon-o-folder-arrow-down')
+            ->color('danger'),
+            ImportAction::make()
+            ->importer(ProductImporter::class)
+            ->disabled()
+
         ];
     }
 }
