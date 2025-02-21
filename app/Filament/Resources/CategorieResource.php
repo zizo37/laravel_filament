@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CategorieResource\Pages;
 use App\Filament\Resources\CategorieResource\RelationManagers;
 use App\Models\Categorie;
+use App\Traits\HasActiveIcon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,6 +16,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CategorieResource extends Resource
 {
+
+    use HasActiveIcon;
+
+
     protected static ?string $model = Categorie::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-folder';

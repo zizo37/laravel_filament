@@ -4,11 +4,13 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\OrderResource\Pages;
 use App\Filament\Resources\OrderResource\RelationManagers;
+use App\Models\Invoice;
 use App\Models\Order;
 use App\Models\OrderStatus;
 use App\Traits\HasActiveIcon;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -189,6 +191,27 @@ class OrderResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('generate_invoice')
+                    ->label('Generate Invoice')
+                    ->icon('heroicon-o-document-text')
+                    ->action(function (Order $record) {
+                        $invoice = Invoice::create([
+                            'order_id' => $record->id,
+                            'invoice_number' => 'INV-' . str_pad($record->id, 6, '0', STR_PAD_LEFT),
+                            'invoice_date' => now(),
+                            'due_date' => now()->addDays(30),
+                            'subtotal' => $record->total_amount,
+                            'tax' => $record->total_amount * 0.20,
+                            'total' => $record->total_amount * 1.20,
+                            'status' => 'unpaid',
+                        ]);
+
+                        Notification::make()
+                            ->title('Invoice Generated')
+                            ->success()
+                            ->send();
+                    })
+                    ->visible(fn (Order $record) => !$record->invoice()->exists()),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\DepotResource\Pages;
 use App\Filament\Resources\DepotResource\RelationManagers;
 use App\Models\Depot;
+use App\Traits\HasActiveIcon;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
 use Filament\Forms\Form;
@@ -16,6 +17,11 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class DepotResource extends Resource
 {
+
+
+    use HasActiveIcon;
+
+
     protected static ?string $model = Depot::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';

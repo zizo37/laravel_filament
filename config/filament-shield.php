@@ -55,8 +55,19 @@ return [
         'pages' => true,
         'widgets' => true,
         'resources' => true,
-        'custom_permissions' => false,
+        'custom_permissions' => true,
     ],
+
+    'custom_permissions' => [
+        'view_products',
+        'view_own_profile',
+        'update_own_profile',
+        'create_orders',
+        'delete_own_orders',
+        'view_own_orders',
+    ],
+
+
 
     'generator' => [
         'option' => 'policies_and_permissions',

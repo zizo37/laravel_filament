@@ -95,6 +95,10 @@ class ProductResource extends Resource
                         ->options(Depot::class::pluck('name', 'id')),
                     Forms\Components\FileUpload::make('image')
                     ->maxSize(5120)
+                    ->image()
+                    ->downloadable()
+                    ->deletable()
+
                     // ->directory('products'),
                     // Forms\Components\Toggle::make('is_active')
                     //     ->label('Available')

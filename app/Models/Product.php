@@ -26,7 +26,10 @@ class Product extends Model
         'is_active' => 'boolean',
         'price' => 'decimal:2',
         'stock' => 'integer',
+        // 'image' => 'array',
     ];
+
+
 
 
 

@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrderItemResource\Pages;
 use App\Filament\Resources\OrderItemResource\RelationManagers;
 use App\Models\OrderItem;
+use App\Traits\HasActiveIcon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,6 +16,9 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class OrderItemResource extends Resource
 {
+
+    use HasActiveIcon;
+
     protected static ?string $model = OrderItem::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-archive-box';

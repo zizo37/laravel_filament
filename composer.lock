@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9601e19d4538184e0a04998e4363626a",
+    "content-hash": "16708f9ffdca3cc1abf257f98bc6ccc8",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -125,6 +125,83 @@
                 "source": "https://github.com/Bacon/BaconQrCode/tree/v3.0.1"
             },
             "time": "2024-10-01T13:55:55+00:00"
+        },
+        {
+            "name": "barryvdh/laravel-dompdf",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/barryvdh/laravel-dompdf.git",
+                "reference": "8d698b4aec2be91fe1e47ba71ba258acbf23357d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/barryvdh/laravel-dompdf/zipball/8d698b4aec2be91fe1e47ba71ba258acbf23357d",
+                "reference": "8d698b4aec2be91fe1e47ba71ba258acbf23357d",
+                "shasum": ""
+            },
+            "require": {
+                "dompdf/dompdf": "^3.0",
+                "illuminate/support": "^9|^10|^11",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.7.0",
+                "orchestra/testbench": "^7|^8|^9",
+                "phpro/grumphp": "^2.5",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "PDF": "Barryvdh\\DomPDF\\Facade\\Pdf",
+                        "Pdf": "Barryvdh\\DomPDF\\Facade\\Pdf"
+                    },
+                    "providers": [
+                        "Barryvdh\\DomPDF\\ServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Barryvdh\\DomPDF\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Barry vd. Heuvel",
+                    "email": "barryvdh@gmail.com"
+                }
+            ],
+            "description": "A DOMPDF Wrapper for Laravel",
+            "keywords": [
+                "dompdf",
+                "laravel",
+                "pdf"
+            ],
+            "support": {
+                "issues": "https://github.com/barryvdh/laravel-dompdf/issues",
+                "source": "https://github.com/barryvdh/laravel-dompdf/tree/v3.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://fruitcake.nl",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/barryvdh",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-01-21T20:24:00+00:00"
         },
         {
             "name": "bezhansalleh/filament-shield",
@@ -1103,6 +1180,161 @@
             "time": "2024-02-05T11:56:58+00:00"
         },
         {
+            "name": "dompdf/dompdf",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dompdf/dompdf.git",
+                "reference": "a51bd7a063a65499446919286fb18b518177155a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dompdf/dompdf/zipball/a51bd7a063a65499446919286fb18b518177155a",
+                "reference": "a51bd7a063a65499446919286fb18b518177155a",
+                "shasum": ""
+            },
+            "require": {
+                "dompdf/php-font-lib": "^1.0.0",
+                "dompdf/php-svg-lib": "^1.0.0",
+                "ext-dom": "*",
+                "ext-mbstring": "*",
+                "masterminds/html5": "^2.0",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "ext-gd": "*",
+                "ext-json": "*",
+                "ext-zip": "*",
+                "mockery/mockery": "^1.3",
+                "phpunit/phpunit": "^7.5 || ^8 || ^9 || ^10 || ^11",
+                "squizlabs/php_codesniffer": "^3.5",
+                "symfony/process": "^4.4 || ^5.4 || ^6.2 || ^7.0"
+            },
+            "suggest": {
+                "ext-gd": "Needed to process images",
+                "ext-gmagick": "Improves image processing performance",
+                "ext-imagick": "Improves image processing performance",
+                "ext-zlib": "Needed for pdf stream compression"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Dompdf\\": "src/"
+                },
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "The Dompdf Community",
+                    "homepage": "https://github.com/dompdf/dompdf/blob/master/AUTHORS.md"
+                }
+            ],
+            "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
+            "homepage": "https://github.com/dompdf/dompdf",
+            "support": {
+                "issues": "https://github.com/dompdf/dompdf/issues",
+                "source": "https://github.com/dompdf/dompdf/tree/v3.1.0"
+            },
+            "time": "2025-01-15T14:09:04+00:00"
+        },
+        {
+            "name": "dompdf/php-font-lib",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dompdf/php-font-lib.git",
+                "reference": "6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dompdf/php-font-lib/zipball/6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d",
+                "reference": "6137b7d4232b7f16c882c75e4ca3991dbcf6fe2d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^7.1 || ^8.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^3 || ^4 || ^5 || ^6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FontLib\\": "src/FontLib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "The FontLib Community",
+                    "homepage": "https://github.com/dompdf/php-font-lib/blob/master/AUTHORS.md"
+                }
+            ],
+            "description": "A library to read, parse, export and make subsets of different types of font files.",
+            "homepage": "https://github.com/dompdf/php-font-lib",
+            "support": {
+                "issues": "https://github.com/dompdf/php-font-lib/issues",
+                "source": "https://github.com/dompdf/php-font-lib/tree/1.0.1"
+            },
+            "time": "2024-12-02T14:37:59+00:00"
+        },
+        {
+            "name": "dompdf/php-svg-lib",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/dompdf/php-svg-lib.git",
+                "reference": "eb045e518185298eb6ff8d80d0d0c6b17aecd9af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/dompdf/php-svg-lib/zipball/eb045e518185298eb6ff8d80d0d0c6b17aecd9af",
+                "reference": "eb045e518185298eb6ff8d80d0d0c6b17aecd9af",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^7.1 || ^8.0",
+                "sabberworm/php-css-parser": "^8.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Svg\\": "src/Svg"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "The SvgLib Community",
+                    "homepage": "https://github.com/dompdf/php-svg-lib/blob/master/AUTHORS.md"
+                }
+            ],
+            "description": "A library to read, parse and export to PDF SVG files.",
+            "homepage": "https://github.com/dompdf/php-svg-lib",
+            "support": {
+                "issues": "https://github.com/dompdf/php-svg-lib/issues",
+                "source": "https://github.com/dompdf/php-svg-lib/tree/1.0.0"
+            },
+            "time": "2024-04-29T13:26:35+00:00"
+        },
+        {
             "name": "dragonmantank/cron-expression",
             "version": "v3.4.0",
             "source": {
@@ -1667,6 +1899,80 @@
             "time": "2025-02-10T10:37:39+00:00"
         },
         {
+            "name": "flowframe/laravel-trend",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Flowframe/laravel-trend.git",
+                "reference": "391849c27a1d4791efae930746a51d982820bd3a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Flowframe/laravel-trend/zipball/391849c27a1d4791efae930746a51d982820bd3a",
+                "reference": "391849c27a1d4791efae930746a51d982820bd3a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.37|^9|^10.0|^11.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.4.3"
+            },
+            "require-dev": {
+                "nunomaduro/collision": "^5.3|^6.1|^8.0",
+                "orchestra/testbench": "^6.15|^7.0|^8.0|^9.0",
+                "pestphp/pest": "^1.18|^2.34",
+                "pestphp/pest-plugin-laravel": "^1.1|^2.3",
+                "spatie/laravel-ray": "^1.23",
+                "vimeo/psalm": "^4.8|^5.6"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "Trend": "Flowframe\\Trend\\TrendFacade"
+                    },
+                    "providers": [
+                        "Flowframe\\Trend\\TrendServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Flowframe\\Trend\\": "src",
+                    "Flowframe\\Trend\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Lars Klopstra",
+                    "email": "lars@flowframe.nl",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily generate model trends",
+            "homepage": "https://github.com/flowframe/laravel-trend",
+            "keywords": [
+                "Flowframe",
+                "laravel",
+                "laravel-trend"
+            ],
+            "support": {
+                "issues": "https://github.com/Flowframe/laravel-trend/issues",
+                "source": "https://github.com/Flowframe/laravel-trend/tree/v0.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/larsklopstra",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-27T09:20:30+00:00"
+        },
+        {
             "name": "fruitcake/php-cors",
             "version": "v1.3.0",
             "source": {
@@ -2211,6 +2517,80 @@
             "time": "2025-02-03T10:55:03+00:00"
         },
         {
+            "name": "inertiajs/inertia-laravel",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inertiajs/inertia-laravel.git",
+                "reference": "0259e37f802bc39c814c42ba92c04ada17921f70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/0259e37f802bc39c814c42ba92c04ada17921f70",
+                "reference": "0259e37f802bc39c814c42ba92c04ada17921f70",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^10.0|^11.0",
+                "php": "^8.1.0",
+                "symfony/console": "^6.2|^7.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.16",
+                "mockery/mockery": "^1.3.3",
+                "orchestra/testbench": "^8.0|^9.2",
+                "phpunit/phpunit": "^10.4|^11.0",
+                "roave/security-advisories": "dev-master"
+            },
+            "suggest": {
+                "ext-pcntl": "Recommended when running the Inertia SSR server via the `inertia:start-ssr` artisan command."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Inertia\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "./helpers.php"
+                ],
+                "psr-4": {
+                    "Inertia\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan Reinink",
+                    "email": "jonathan@reinink.ca",
+                    "homepage": "https://reinink.ca"
+                }
+            ],
+            "description": "The Laravel adapter for Inertia.js.",
+            "keywords": [
+                "inertia",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/inertiajs/inertia-laravel/issues",
+                "source": "https://github.com/inertiajs/inertia-laravel/tree/v2.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/reinink",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-12-13T02:48:29+00:00"
+        },
+        {
             "name": "jeffgreco13/filament-breezy",
             "version": "v2.5.2",
             "source": {
@@ -2285,6 +2665,243 @@
                 "source": "https://github.com/jeffgreco13/filament-breezy/tree/v2.5.2"
             },
             "time": "2025-02-01T16:13:59+00:00"
+        },
+        {
+            "name": "jfcherng/php-color-output",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfcherng/php-color-output.git",
+                "reference": "6c7bf16686cc6a291647fcb87491640a2d5edd20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfcherng/php-color-output/zipball/6c7bf16686cc6a291647fcb87491640a2d5edd20",
+                "reference": "6c7bf16686cc6a291647fcb87491640a2d5edd20",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.19",
+                "liip/rmt": "^1.6",
+                "phan/phan": "^2 || ^3 || ^4",
+                "phpunit/phpunit": ">=7 <10",
+                "squizlabs/php_codesniffer": "^3.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jfcherng\\Utility\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Cherng",
+                    "email": "jfcherng@gmail.com"
+                }
+            ],
+            "description": "Make your PHP command-line application colorful.",
+            "keywords": [
+                "ansi-colors",
+                "color",
+                "command-line",
+                "str-color"
+            ],
+            "support": {
+                "issues": "https://github.com/jfcherng/php-color-output/issues",
+                "source": "https://github.com/jfcherng/php-color-output/tree/3.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/jfcherng/5usd",
+                    "type": "custom"
+                }
+            ],
+            "time": "2021-05-27T02:45:54+00:00"
+        },
+        {
+            "name": "jfcherng/php-diff",
+            "version": "6.16.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfcherng/php-diff.git",
+                "reference": "7f46bcfc582e81769237d0b3f6b8a548efe8799d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfcherng/php-diff/zipball/7f46bcfc582e81769237d0b3f6b8a548efe8799d",
+                "reference": "7f46bcfc582e81769237d0b3f6b8a548efe8799d",
+                "shasum": ""
+            },
+            "require": {
+                "jfcherng/php-color-output": "^3",
+                "jfcherng/php-mb-string": "^1.4.6 || ^2",
+                "jfcherng/php-sequence-matcher": "^3.2.10 || ^4",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.51",
+                "liip/rmt": "^1.6",
+                "phan/phan": "^5",
+                "phpunit/phpunit": "^9",
+                "squizlabs/php_codesniffer": "^3.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jfcherng\\Diff\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Cherng",
+                    "email": "jfcherng@gmail.com"
+                },
+                {
+                    "name": "Chris Boulton",
+                    "email": "chris.boulton@interspire.com"
+                }
+            ],
+            "description": "A comprehensive library for generating differences between two strings in multiple formats (unified, side by side HTML etc).",
+            "keywords": [
+                "diff",
+                "udiff",
+                "unidiff",
+                "unified diff"
+            ],
+            "support": {
+                "issues": "https://github.com/jfcherng/php-diff/issues",
+                "source": "https://github.com/jfcherng/php-diff/tree/6.16.2"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/jfcherng/5usd",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-03-10T17:40:29+00:00"
+        },
+        {
+            "name": "jfcherng/php-mb-string",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfcherng/php-mb-string.git",
+                "reference": "8407bfefde47849c9e7c9594e6de2ac85a0f845d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfcherng/php-mb-string/zipball/8407bfefde47849c9e7c9594e6de2ac85a0f845d",
+                "reference": "8407bfefde47849c9e7c9594e6de2ac85a0f845d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3",
+                "phan/phan": "^5",
+                "phpunit/phpunit": "^9 || ^10"
+            },
+            "suggest": {
+                "ext-iconv": "Either \"ext-iconv\" or \"ext-mbstring\" is requried.",
+                "ext-mbstring": "Either \"ext-iconv\" or \"ext-mbstring\" is requried."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jfcherng\\Utility\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Cherng",
+                    "email": "jfcherng@gmail.com"
+                }
+            ],
+            "description": "A high performance multibytes sting implementation for frequently reading/writing operations.",
+            "support": {
+                "issues": "https://github.com/jfcherng/php-mb-string/issues",
+                "source": "https://github.com/jfcherng/php-mb-string/tree/2.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/jfcherng/5usd",
+                    "type": "custom"
+                }
+            ],
+            "time": "2023-04-17T14:23:16+00:00"
+        },
+        {
+            "name": "jfcherng/php-sequence-matcher",
+            "version": "4.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jfcherng/php-sequence-matcher.git",
+                "reference": "d2038ac29627340a7458609072a8ba355e80ec5b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jfcherng/php-sequence-matcher/zipball/d2038ac29627340a7458609072a8ba355e80ec5b",
+                "reference": "d2038ac29627340a7458609072a8ba355e80ec5b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3",
+                "phan/phan": "^5",
+                "phpunit/phpunit": "^9 || ^10",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jfcherng\\Diff\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jack Cherng",
+                    "email": "jfcherng@gmail.com"
+                },
+                {
+                    "name": "Chris Boulton",
+                    "email": "chris.boulton@interspire.com"
+                }
+            ],
+            "description": "A longest sequence matcher. The logic is primarily based on the Python difflib package.",
+            "support": {
+                "issues": "https://github.com/jfcherng/php-sequence-matcher/issues",
+                "source": "https://github.com/jfcherng/php-sequence-matcher/tree/4.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/jfcherng/5usd",
+                    "type": "custom"
+                }
+            ],
+            "time": "2023-05-21T07:57:08+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
@@ -3465,6 +4082,82 @@
             "time": "2025-01-28T21:39:51+00:00"
         },
         {
+            "name": "mansoor/filament-versionable",
+            "version": "v0.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mansoorkhan96/filament-versionable.git",
+                "reference": "9ac7d69fe8ae0d98c9d5e41dc53d2ce7cae3709a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mansoorkhan96/filament-versionable/zipball/9ac7d69fe8ae0d98c9d5e41dc53d2ce7cae3709a",
+                "reference": "9ac7d69fe8ae0d98c9d5e41dc53d2ce7cae3709a",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.0",
+                "illuminate/contracts": "^10.0|^11.0",
+                "overtrue/laravel-versionable": "^5.1",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.15.0"
+            },
+            "require-dev": {
+                "larastan/larastan": "^2.0",
+                "laravel/pint": "^1.0",
+                "nunomaduro/collision": "^7.9",
+                "orchestra/testbench": "^8.0",
+                "pestphp/pest": "^2.0",
+                "pestphp/pest-plugin-arch": "^2.0",
+                "pestphp/pest-plugin-laravel": "^2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "FilamentVersionable": "Mansoor\\FilamentVersionable\\Facades\\FilamentVersionable"
+                    },
+                    "providers": [
+                        "Mansoor\\FilamentVersionable\\FilamentVersionableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Mansoor\\FilamentVersionable\\": "src/",
+                    "Mansoor\\FilamentVersionable\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mansoor Ahmed",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This is my package filament-versionable",
+            "homepage": "https://github.com/mansoor/filament-versionable",
+            "keywords": [
+                "filament-versionable",
+                "laravel",
+                "mansoor"
+            ],
+            "support": {
+                "issues": "https://github.com/mansoor/filament-versionable/issues",
+                "source": "https://github.com/mansoor/filament-versionable"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mansoor",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-12-10T06:24:59+00:00"
+        },
+        {
             "name": "masterminds/html5",
             "version": "2.9.0",
             "source": {
@@ -4125,6 +4818,72 @@
                 }
             ],
             "time": "2025-01-30T13:51:11+00:00"
+        },
+        {
+            "name": "overtrue/laravel-versionable",
+            "version": "5.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/overtrue/laravel-versionable.git",
+                "reference": "b7c20d6a783e9c10795cd760b6ab2d9bbe6f01a2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/overtrue/laravel-versionable/zipball/b7c20d6a783e9c10795cd760b6ab2d9bbe6f01a2",
+                "reference": "b7c20d6a783e9c10795cd760b6ab2d9bbe6f01a2",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3.8|^4.0",
+                "jfcherng/php-diff": "^6.11",
+                "laravel/framework": "^9.0|^10.0|^11.0|^12.0",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "brainmaestro/composer-git-hooks": "dev-master",
+                "laravel/pint": "^1.5",
+                "mockery/mockery": "^1.4",
+                "orchestra/testbench": "^8.21|^10.0",
+                "phpunit/phpunit": "^10.0|^11.5.3"
+            },
+            "type": "library",
+            "extra": {
+                "hooks": {
+                    "pre-push": [
+                        "composer test"
+                    ],
+                    "pre-commit": [
+                        "composer check-style",
+                        "composer test"
+                    ]
+                },
+                "laravel": {
+                    "providers": [
+                        "Overtrue\\LaravelVersionable\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Overtrue\\LaravelVersionable\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Make Laravel model versionable.",
+            "support": {
+                "issues": "https://github.com/overtrue/laravel-versionable/issues",
+                "source": "https://github.com/overtrue/laravel-versionable/tree/5.4.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/overtrue",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-17T05:54:07+00:00"
         },
         {
             "name": "owenvoke/blade-fontawesome",
@@ -5224,6 +5983,139 @@
             "time": "2024-02-26T18:08:49+00:00"
         },
         {
+            "name": "sabberworm/php-css-parser",
+            "version": "v8.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MyIntervals/PHP-CSS-Parser.git",
+                "reference": "f414ff953002a9b18e3a116f5e462c56f21237cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MyIntervals/PHP-CSS-Parser/zipball/f414ff953002a9b18e3a116f5e462c56f21237cf",
+                "reference": "f414ff953002a9b18e3a116f5e462c56f21237cf",
+                "shasum": ""
+            },
+            "require": {
+                "ext-iconv": "*",
+                "php": "^5.6.20 || ^7.0.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7.27 || 6.5.14 || 7.5.20 || 8.5.40"
+            },
+            "suggest": {
+                "ext-mbstring": "for parsing UTF-8 CSS"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "9.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sabberworm\\CSS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Raphael Schweikert"
+                },
+                {
+                    "name": "Oliver Klee",
+                    "email": "github@oliverklee.de"
+                },
+                {
+                    "name": "Jake Hotson",
+                    "email": "jake.github@qzdesign.co.uk"
+                }
+            ],
+            "description": "Parser for CSS Files written in PHP",
+            "homepage": "https://www.sabberworm.com/blog/2010/6/10/php-css-parser",
+            "keywords": [
+                "css",
+                "parser",
+                "stylesheet"
+            ],
+            "support": {
+                "issues": "https://github.com/MyIntervals/PHP-CSS-Parser/issues",
+                "source": "https://github.com/MyIntervals/PHP-CSS-Parser/tree/v8.7.0"
+            },
+            "time": "2024-10-27T17:38:32+00:00"
+        },
+        {
+            "name": "spatie/browsershot",
+            "version": "5.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/browsershot.git",
+                "reference": "0102971ae974022ec4a7a149e8924ea355b52cc3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/0102971ae974022ec4a7a149e8924ea355b52cc3",
+                "reference": "0102971ae974022ec4a7a149e8924ea355b52cc3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "ext-json": "*",
+                "php": "^8.2",
+                "spatie/temporary-directory": "^2.0",
+                "symfony/process": "^6.0|^7.0"
+            },
+            "require-dev": {
+                "pestphp/pest": "^3.0",
+                "spatie/image": "^3.6",
+                "spatie/pdf-to-text": "^1.52",
+                "spatie/phpunit-snapshot-assertions": "^4.2.3|^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Browsershot\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://github.com/freekmurze",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Convert a webpage to an image or pdf using headless Chrome",
+            "homepage": "https://github.com/spatie/browsershot",
+            "keywords": [
+                "chrome",
+                "convert",
+                "headless",
+                "image",
+                "pdf",
+                "puppeteer",
+                "screenshot",
+                "webpage"
+            ],
+            "support": {
+                "source": "https://github.com/spatie/browsershot/tree/5.0.8"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-17T09:56:12+00:00"
+        },
+        {
             "name": "spatie/color",
             "version": "1.8.0",
             "source": {
@@ -5483,6 +6375,67 @@
                 }
             ],
             "time": "2025-02-13T19:57:18+00:00"
+        },
+        {
+            "name": "spatie/temporary-directory",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/temporary-directory.git",
+                "reference": "580eddfe9a0a41a902cac6eeb8f066b42e65a32b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/580eddfe9a0a41a902cac6eeb8f066b42e65a32b",
+                "reference": "580eddfe9a0a41a902cac6eeb8f066b42e65a32b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\TemporaryDirectory\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Vanderbist",
+                    "email": "alex@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easily create, use and destroy temporary directories",
+            "homepage": "https://github.com/spatie/temporary-directory",
+            "keywords": [
+                "php",
+                "spatie",
+                "temporary-directory"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/temporary-directory/issues",
+                "source": "https://github.com/spatie/temporary-directory/tree/2.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-01-13T13:04:43+00:00"
         },
         {
             "name": "symfony/clock",
