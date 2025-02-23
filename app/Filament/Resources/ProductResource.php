@@ -13,6 +13,7 @@ use App\Models\User;
 use App\Traits\HasActiveIcon;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -22,6 +23,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Auth;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Model;
 
 class ProductResource extends Resource
@@ -66,19 +69,36 @@ class ProductResource extends Resource
                     //     ->imageCropAspectRatio('16:9')
                     //     ->imageResizeTargetWidth('1920')
                     //     ->imageResizeTargetHeight('1080'),
-                    Forms\Components\Textarea::make('description')
-                        ->required()
-                        ->maxLength(1000)
-                        ->rows(3),
+                    // Forms\Components\Textarea::make('description')
+                    //     ->required()
+                    //     ->maxLength(1000)
+                    //     ->rows(3),
+
+
                     Forms\Components\TextInput::make('price')
                         ->required()
                         ->numeric()
                         ->prefix('DH')
                         ->minValue(0),
+
                     Forms\Components\TextInput::make('stock')
                         ->required()
                         ->numeric()
                         ->minValue(0),
+
+                    Forms\Components\MarkdownEditor::make('description')
+                    ->required()
+                    ->maxLength(1000)
+                    ->toolbarButtons([
+                        'bold',
+                        'italic',
+                        'link',
+                        'bulletList',
+                        'orderedList',
+                        'redo',
+                        'undo',
+                    ])->columnSpanFull('full'),
+
                     Forms\Components\Select::make('category_id')
                         // ->relationship('category', 'name')
                         ->required()
@@ -86,6 +106,7 @@ class ProductResource extends Resource
                         ->preload()
                         ->live()
                         ->options(Categorie::class::pluck('name', 'id')),
+
                     Forms\Components\Select::make('depot_id')
                         ->relationship('depot', 'name')
                         ->required()
@@ -97,13 +118,17 @@ class ProductResource extends Resource
                     ->maxSize(5120)
                     ->image()
                     ->downloadable()
-                    ->deletable()
+                    ->deletable(),
 
                     // ->directory('products'),
                     // Forms\Components\Toggle::make('is_active')
                     //     ->label('Available')
                     //     ->default(true),
-                ])->columns(2)
+
+                    Checkbox::make('is_active')
+                        ->label('Available')
+                        ->default(true),
+                ])->columns(3)
         ]);
 }
 
@@ -132,7 +157,11 @@ public static function table(Table $table): Table
                 }),
         ])
         ->filters([
-            //
+            Filter::make('Published')
+                ->query(fn (Builder $query): Builder => $query->where('is_active', true)),
+            Filter::make('Not Published')
+                ->query(fn (Builder $query): Builder => $query->where('is_active', false)),
+            SelectFilter::make('category')->relationship('category','name')
         ])
         ->actions([
             Tables\Actions\ViewAction::make()->label('')->icon('heroicon-o-eye')
@@ -206,4 +235,7 @@ public static function getPages(): array
         'edit' => Pages\EditProduct::route('/{record}/edit'),
     ];
 }
+
+
+
 }

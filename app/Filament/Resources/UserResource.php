@@ -35,6 +35,9 @@ class UserResource extends Resource
                 TextInput::make('name')->required(),
                 TextInput::make('email')->required(),
                 TextInput::make('password')->password(),
+                Forms\Components\Select::make('roles')
+    ->relationship('roles', 'name')
+    ->preload(),
             ]);
     }
 
@@ -45,6 +48,10 @@ class UserResource extends Resource
                 TextColumn::make('name'),
                 TextColumn::make('email')->searchable(),
                 TextColumn::make('created_at'),
+                TextColumn::make('roles')
+                ->formatStateUsing(fn ($record) => $record->roles->pluck('name')->join(', '))
+                ->label('Roles')
+                ->badge(),
             ])
             ->filters([
                 //

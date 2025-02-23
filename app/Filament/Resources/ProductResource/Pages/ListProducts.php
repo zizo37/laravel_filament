@@ -25,7 +25,7 @@ class ListProducts extends ListRecords
             ->color('danger'),
             ImportAction::make()
             ->importer(ProductImporter::class)
-            ->disabled()
+            // ->disabled()
 
         ];
     }

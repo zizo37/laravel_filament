@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Filament\Imports;
 
 use App\Models\Product;
@@ -7,82 +6,87 @@ use Filament\Actions\Imports\ImportColumn;
 use Filament\Actions\Imports\Importer;
 use Filament\Actions\Imports\Models\Import;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 class ProductImporter extends Importer
 {
+    public bool $shouldSkipRows = true;
+
     protected static ?string $model = Product::class;
 
     public static function getColumns(): array
-    {
-        return [
-            ImportColumn::make('name')
-                ->rules(['required', 'max:255'])
-                ->requiredMapping(),
+{
+    return [
+        ImportColumn::make('name')
+            ->rules(['string', 'max:255']), // Remove required
 
-            ImportColumn::make('description')
-                ->rules(['nullable'])
-                ->requiredMapping(),
+        ImportColumn::make('description')
+            ->rules(['string']), // Remove required
 
-            ImportColumn::make('price')
-                ->rules(['required', 'numeric', 'min:0'])
-                ->requiredMapping(),
+        ImportColumn::make('price')
+            ->rules(['numeric', 'min:0']), // Remove required
 
-            ImportColumn::make('stock')
-                ->rules(['required', 'integer', 'min:0'])
-                ->requiredMapping(),
+        ImportColumn::make('stock')
+            ->rules(['integer', 'min:0']), // Remove required
 
-            ImportColumn::make('category_id')
-                ->rules(['required', 'exists:categories,id'])
-                ->requiredMapping(),
+        ImportColumn::make('category_id')
+            ->rules(['integer', 'exists:categories,id']), // Remove required
 
-            ImportColumn::make('depot_id')
-                ->rules(['required', 'exists:depots,id'])
-                ->requiredMapping(),
+        ImportColumn::make('depot_id')
+            ->rules(['integer', 'exists:depots,id']), // Remove required
 
-            ImportColumn::make('is_active')
-                ->rules(['nullable', 'boolean'])
-        ];
-    }
+        ImportColumn::make('is_active')
+            ->rules(['boolean']),
+    ];
+}
 
-    public function resolveRecord(): ?Product
-    {
-        try {
-            Log::info('Importing product data:', $this->data);
+public function resolveRecord(): ?Product
+{
+    Log::info('Processing import row', ['data' => $this->data]); // Add this
 
-            // Try to find existing product by name
-            $product = Product::where('name', $this->data['name'])->first();
+    DB::beginTransaction();
 
-            if (!$product) {
-                $product = new Product();
-            }
+    try {
+        $name = $this->data['name'] ?? null;
 
-            // Map the data
-            $product->fill([
-                'name' => $this->data['name'],
-                'description' => $this->data['description'],
-                'price' => $this->data['price'],
-                'stock' => $this->data['stock'],
-                'category_id' => $this->data['category_id'],
-                'depot_id' => $this->data['depot_id'],
-                'is_active' => $this->data['is_active'] ?? true,
-            ]);
-
-            // Save the product
-            if ($product->save()) {
-                Log::info('Product saved successfully:', ['id' => $product->id, 'name' => $product->name]);
-            } else {
-                Log::error('Failed to save product:', ['name' => $this->data['name']]);
-            }
-
-            return $product;
-        } catch (\Exception $e) {
-            Log::error('Error in ProductImporter:', [
-                'message' => $e->getMessage(),
-                'data' => $this->data
-            ]);
-            throw $e;
+        if (!$name) {
+            Log::error('Product name is missing in import data', ['data' => $this->data]);
+            DB::rollBack();
+            return null;
         }
+
+        $product = Product::updateOrCreate(
+            ['name' => $name],
+            [
+                'description' => $this->data['description'],
+                'price' => (float) $this->data['price'],
+                'stock' => (int) $this->data['stock'],
+                'category_id' => (int) $this->data['category_id'],
+                'depot_id' => (int) $this->data['depot_id'],
+                'is_active' => (bool) ($this->data['is_active'] ?? true),
+            ]
+        );
+
+        DB::commit();
+
+        Log::info('Product imported successfully', [
+            'id' => $product->id,
+            'name' => $product->name
+        ]);
+
+        return $product;
+
+    } catch (\Exception $e) {
+        DB::rollBack();
+
+        Log::error('Failed to import product', [
+            'error' => $e->getMessage(),
+            'data' => $this->data
+        ]);
+
+        return null;
     }
+}
 
     public static function getCompletedNotificationBody(Import $import): string
     {
