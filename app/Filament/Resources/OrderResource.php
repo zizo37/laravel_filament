@@ -16,6 +16,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class OrderResource extends Resource
 {
@@ -66,7 +67,14 @@ class OrderResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+        ->modifyQueryUsing(function (Builder $query) {
+
+            if (!Auth::user()->is_admin) {
+                $query->where('user_id', Auth::id());
+            }
+            return $query;
+        })
+        ->columns([
                 Tables\Columns\TextColumn::make('id')
                     ->sortable()
                     ->searchable(),

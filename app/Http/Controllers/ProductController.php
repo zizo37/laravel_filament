@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+
+
     public function index()
 {
     $products = Product::with(['category', 'depot'])
@@ -68,5 +71,8 @@ public function show($id)
         'relatedProducts' => $relatedProducts
     ]);
 }
+
+
+
 
 }

@@ -5,6 +5,8 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use Edwink\FilamentUserActivity\Traits\UserActivityTrait;
+
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +20,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable,TwoFactorAuthenticatable,HasRoles,HasPanelShield;
+    use HasFactory, Notifiable,TwoFactorAuthenticatable,HasRoles,HasPanelShield,UserActivityTrait;
 
     use Versionable;
     /**

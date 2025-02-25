@@ -10,6 +10,7 @@
         "barryvdh/laravel-dompdf": "^3.1",
         "bezhansalleh/filament-shield": "^3.3",
         "davidhsianturi/blade-bootstrap-icons": "^1.5",
+        "edwink/filament-user-activity": "^1.0",
         "filament/filament": "^3.2",
         "flowframe/laravel-trend": "^0.3.0",
         "inertiajs/inertia-laravel": "^2.0",
